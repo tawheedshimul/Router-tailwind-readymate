@@ -1,38 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const PostBox = () => {
-    return (
-        <div className="w-full max-w-xl mx-auto bg-white rounded-lg shadow-md p-4">
-            {/* Header */}
-            <div className="flex items-center mb-4">
-                <img src="https://via.placeholder.com/50" alt="User Avatar" className="w-10 h-10 rounded-full mr-2" />
-                <span className="font-semibold text-gray-700">Username</span>
-            </div>
+function TwitterPostBox() {
+  const [tweetContent, setTweetContent] = useState('');
+  const [charCount, setCharCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
-            {/* Textarea */}
-            <textarea placeholder="What's happening?" className="w-full p-2 mb-2 border rounded-md resize-none"></textarea>
+  const handleTweetChange = (event) => {
+    setTweetContent(event.target.value);
+    setCharCount(event.target.value.length);
+  };
 
-            {/* Actions */}
-            <div className="flex justify-between items-center">
-                {/* Attachments */}
-                <div className="flex items-center space-x-2">
-                    <button className="text-blue-500">
-                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13v4h2v-4h-2zm0 6v2h2v-2h-2z"></path>
-                        </svg>
-                    </button>
-                    <button className="text-blue-500">
-                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M13 2V6H4v16h16V8h-7V2h-1zm-2 16h-2v-2h2v2zm0-4h-2v-6h2v6z"></path>
-                        </svg>
-                    </button>
-                </div>
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setIsLoading(true);
 
-                {/* Submit Button */}
-                <button className="px-4 py-2 bg-blue-500 text-white rounded-md">Tweet</button>
-            </div>
-        </div>
-    );
-};
+    try {
+      const response = await fetch('/api/postTweet', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          // Add authorization headers if needed
+        },
+        body: JSON.stringify({ content: tweetContent }),
+      });
 
-export default PostBox;
+      if (response.ok) {
+        console.log('Tweet submitted successfully!');
+        setTweetContent('');
+        setCharCount(0);
+      } else {
+        console.error('Tweet submission failed:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error submitting tweet:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className=" py-2 border-b mb-2 border-gray-700">
+      <div className="flex items-start">
+        <img
+          className="w-12 h-12 rounded-full mr-3"
+          src="https://www.gravatar.com/avatar/?d=mp" 
+          alt="Profile picture"
+        />
+        <form className="w-full" onSubmit={handleSubmit}>
+          <textarea
+            className="w-full resize-none outline-none bg-black border-b-2 border-gray-700 focus:border-sky-300  p-2"
+            placeholder="What's happening?"
+            value={tweetContent}
+            onChange={handleTweetChange}
+            rows={3}
+          />
+          <div className="flex justify-between items-center mt-2">
+            <span className="text-gray-500">{charCount}/280</span>  
+            <button
+              className="bg-gray-700 px-4 py-2 rounded-full font-bold hover:bg-gray-800 cursor-pointer disabled:opacity-50"
+              type="submit"
+              disabled={tweetContent.trim().length === 0 || isLoading}
+            >
+              {isLoading ? 'Posting...' : 'POST'} 
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+export default TwitterPostBox;
