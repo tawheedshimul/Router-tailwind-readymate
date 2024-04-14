@@ -2,7 +2,7 @@ import React from 'react';
 
 const Login = () => {
     return (
-        <div style={{ backgroundImage: "url('https://i.ibb.co/wSs3tJ8/loginbg.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}>
+        <div style={{ backgroundImage: "url('https://i.ibb.co/2yxF6Dh/loginbf.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}>
             <div className="flex mt-24 itmes-center">
                 <div className='bg-black w-6/12 py-3.5 font-bold md:border-r border-b border-black'> <span className='px-2'>TAWHEED</span>  </div>
                 <div className='border-b backdrop-blur-lg bg-white/10 w-full py-3.5 flex justify-around  font-bold  outline-none'>
