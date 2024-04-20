@@ -1,20 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
         <div style={{ backgroundImage: "url('https://i.ibb.co/2yxF6Dh/loginbf.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}>
-            <div className="flex mt-24 itmes-center">
+            <div className="flex itmes-center">
                 <div className='bg-black w-6/12 py-3.5 font-bold md:border-r border-b border-black'> <span className='px-2'>TAWHEED</span>  </div>
                 <div className='border-b backdrop-blur-lg bg-white/10 w-full py-3.5 flex justify-around  font-bold  outline-none'>
-                    <div>
+                    <div className='border-b-2'>
                         LOGIN
                     </div>
                     <div>
-                        REGISTRATION
+                        <Link to="/registration">REGISTRATION</Link>
                     </div>
                 </div>
             </div>
-            <div className="p-6 mt-0 backdrop-blur-lg bg-white/10">
+            <div className="p-6 h-[91vh] backdrop-blur-lg bg-white/10">
                 <form>
                     <div className='item-center'>
                         <div class="relative w-full min-w-[200px]">
