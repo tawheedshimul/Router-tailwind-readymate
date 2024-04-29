@@ -65,7 +65,7 @@ const Message = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="overflow-y-auto flex-grow px-4 py-2">
+      <div className="overflow-y-auto mb-[110px] md:mb-11 flex-grow px-4 py-2">
         {messages.map((message) => (
           <div
             key={message.id}
@@ -83,7 +83,7 @@ const Message = () => {
         ))}
         <div ref={messagesEndRef} />
       </div>
-      <div className="flex mb-[60px] md:mb-0 items-center border-t border-gray-300 p-2">
+      <div className="flex fixed w-full bottom-[60px] md:bottom-0  items-center border-t border-gray-300 p-2">
         <input
           ref={inputRef}
           type="text"
