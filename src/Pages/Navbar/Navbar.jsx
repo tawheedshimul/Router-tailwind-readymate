@@ -4,7 +4,7 @@ import { IoSearchOutline } from "react-icons/io5";
 function Navbar() {
   return (
     <div className='flex justify-between items-center fixed top-0 w-full z-50'>
-      <div className='bg-black w-6/12 py-3.5 font-bold md:border-r border-b border-black'> <span className='px-2'>TAWHEED</span>  </div>
+      <div className='bg-black w-6/12 py-3.5 font-bold md:border-r border-b '> <span className='px-2'>TAWHEED</span>  </div>
       <div className='border-b backdrop-blur-lg bg-black/25 w-full py-3.5 flex justify-around  font-bold  outline-none'>
         <div>
           My Story

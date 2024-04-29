@@ -5,9 +5,9 @@ import PostCard from './PostCard/PostCard';
 
 function Home() {
   return (
-    <div className='flex justify-between  bg-black text-white'>
+    <div className='flex justify-between fixed w-full bg-black text-white'>
       <div className='w-6/12 border-r hidden md:block'>
-        <div className='h-[calc(100vh-30px)] fixed top-[53px] overflow-auto px-2 mr-1'>
+        <div className='h-[calc(100vh-30px)] mt-14 overflow-auto px-2 mr-1'>
           <Left />
         </div>
       </div>
