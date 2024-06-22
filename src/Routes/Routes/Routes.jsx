@@ -9,7 +9,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const fetchPosts = async () => {
   try {
-    const response = await fetch('http://localhost:7000/blogs');
+    const response = await fetch('https://server-tawheed-blog.vercel.app/blogs');
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
