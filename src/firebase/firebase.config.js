@@ -1,23 +1,19 @@
-// import { initializeApp } from "firebase/app";
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-// // const firebaseConfig = {
-// //   apiKey: import.meta.env.VITE_apiKey,
-// //   authDomain: import.meta.env.VITE_authDomain,
-// //   projectId: import.meta.env.VITE_projectId,
-// //   storageBucket: import.meta.env.VITE_storageBucket,
-// //   messagingSenderId: import.meta.env.VITE_messagingSenderId,
-// //   appId: import.meta.env.VITE_appId
-// // };
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyD3e9c9hjwg0r4SobH8XhFyqW61bx3tFEw",
+  authDomain: "dragon-news-f471d.firebaseapp.com",
+  projectId: "dragon-news-f471d",
+  storageBucket: "dragon-news-f471d.appspot.com",
+  messagingSenderId: "1068603764567",
+  appId: "1:1068603764567:web:19814cc7fffed39f39d812"
+};
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyBsFTsNaHcgd9goKtRMHySmW-Pk5_cqF7I",
-//   authDomain: "project-plus-a3206.firebaseapp.com",
-//   databaseURL: "https://project-plus-a3206-default-rtdb.asia-southeast1.firebasedatabase.app",
-//   projectId: "project-plus-a3206",
-//   storageBucket: "project-plus-a3206.appspot.com",
-//   messagingSenderId: "548044081622",
-//   appId: "1:548044081622:web:1eebb2da855f12beb9fc77"
-// };
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
-// // Initialize Firebase
-// export const app = initializeApp(firebaseConfig);
+export default app;
