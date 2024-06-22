@@ -7,17 +7,29 @@ import Registration from "../../Pages/Account/Login/Registration";
 import Message from "../../Pages/Message/Message";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
-
+const fetchPosts = async () => {
+  try {
+    const response = await fetch('http://localhost:7000/blogs');
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  } catch (error) {
+    console.error("Failed to fetch posts:", error);
+    return { error: error.message };
+  }
+};
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    errorElement: <ErrorPage></ErrorPage>,
-    element: <Main></Main>,
+    errorElement: <ErrorPage />,
+    element: <Main />,
     children: [
       {
         path: '/',
-        element: <PrivateRoute><Home></Home></PrivateRoute>
+        element: <PrivateRoute><Home /></PrivateRoute>,
+        loader: fetchPosts,
       },
       {
         path: '/login',
@@ -33,4 +45,4 @@ export const router = createBrowserRouter([
       },
     ]
   }
-])
+]);
