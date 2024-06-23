@@ -10,7 +10,7 @@ const PostCard = () => {
         fetchPosts();
 
         // Polling interval (every 10 seconds, adjust as needed)
-        const interval = setInterval(fetchPosts, 1000);
+        const interval = setInterval(fetchPosts, 5000);
 
         return () => clearInterval(interval); // Cleanup on unmount
     }, []);
