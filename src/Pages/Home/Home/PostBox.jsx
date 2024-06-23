@@ -20,9 +20,9 @@ function PostBox() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
-
+  
     try {
-      const response = await fetch('https://blog-tawheed-server.vercel.app/blogs', {
+      const response = await fetch('https://blog-server-md-tawheed-shimuls-projects.vercel.app/blogs', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,20 +30,22 @@ function PostBox() {
         },
         body: JSON.stringify({ content: postContent, author: userName }),
       });
-
-      if (response.ok) {
-        console.log('Post submitted successfully!');
-        setPostContent('');
-        setCharCount(0);
-      } else {
-        console.error('Post submission failed:', response.statusText);
+  
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        throw new Error(`Post submission failed: ${errorMessage}`);
       }
+  
+      console.log('Post submitted successfully!');
+      setPostContent('');
+      setCharCount(0);
     } catch (error) {
-      console.error('Error submitting post:', error);
+      console.error('Error submitting post:', error.message);
     } finally {
       setIsLoading(false);
     }
   };
+  
 
   return (
     <div className="py-2 border-b mb-2 border-gray-700">
