@@ -1,16 +1,27 @@
 import React from 'react';
+import { BiBell, BiHome, BiMessage } from 'react-icons/bi';
 import { IoSearchOutline } from "react-icons/io5";
+import { Link, useLocation } from 'react-router-dom';
 
 function Navbar() {
+
+  const location = useLocation();
   return (
     <div className='flex justify-between items-center fixed top-0 w-full z-50'>
       <div className='bg-black w-6/12 py-3.5 font-bold md:border-r border-b '> <span className='px-2'>TAWHEED</span>  </div>
       <div className='border-b backdrop-blur-lg bg-black/25 w-full py-3.5 flex justify-around  font-bold  outline-none'>
-        <div>
-          My Story
+        <Link
+          to='/'
+          className='flex items-center text-2xl space-x-2'
+        >
+          <BiHome className={` ${location.pathname === '/' ? 'border-b-2 ' : ''
+            }`} />
+        </Link>
+        <div className='flex items-center text-2xl space-x-2'>
+          <BiBell />
         </div>
-        <div>
-          Friend Story
+        <div className='flex items-center text-2xl space-x-2'>
+          <BiMessage />
         </div>
       </div>
       <div className='bg-black w-9/12 py-1.5 hidden md:block relative border-l'>

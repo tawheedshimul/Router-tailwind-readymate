@@ -16,7 +16,7 @@ const Main = () => {
             <div className='h-[]'>
             <Outlet></Outlet>
             </div>
-            {noHeaderFooter || <Footer/>}
+            {/* {noHeaderFooter || <Footer/>} */}
         </div>
     );
 };
