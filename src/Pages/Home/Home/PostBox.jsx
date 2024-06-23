@@ -36,7 +36,7 @@ function PostBox() {
         throw new Error(`Post submission failed: ${errorMessage}`);
       }
   
-      console.log('Post submitted successfully!');
+      // alert('Post submitted successfully!');
       setPostContent('');
       setCharCount(0);
     } catch (error) {
